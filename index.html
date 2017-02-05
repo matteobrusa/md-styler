@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_blank">
+</head>
+<title>Loading...</title>
+
+<xmp theme="united" style="display:none;">
+</xmp>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+	$.urlParam = function(name){
+		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+		if (results==null){
+		   return null;
+		}
+		else{
+		   return results[1] || 0;
+		}
+	}
+	url= $.urlParam('url'); 
+	
+	if (url.indexOf("dropbox.com") && url.endsWith("dl=0"))
+		url= url.replace("dl=0", "dl=1");
+
+$.get(
+  "//cors-anywhere.herokuapp.com/"+ url,
+    function (response) {
+ 
+        $("xmp").html(response);
+        $("title").html(url);
+
+        $.getScript("http://strapdownjs.com/v/0.2/strapdown.js")
+});
+	
+</script>
+</html>
