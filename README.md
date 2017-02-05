@@ -11,5 +11,8 @@ Just append the URL you want to style as parameter to this page like this:
 ## How does it work?
 Markdown styler is a simple hack standing on the shoulders of giants: [Strapdown.js](http://strapdownjs.com/) and [cors-anywhere](cors-anywhere.herokuapp.com).
 
+## Can I use it with Dropbox links?
+Sure!
+
 ## Demo please
 https://matteobrusa.github.io/md-styler/?url=https://matteobrusa.github.io/md-styler/README.md
