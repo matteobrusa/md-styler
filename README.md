@@ -2,10 +2,10 @@
 Markdown Styler shows a styled markdown document form a URL of your choice.
 
 ## How do i use it?
-Say you have a markdown document at `https://my.site/my/url`.
+Say you have a markdown document at `https://my.site/my/url.md`.
 Just append the URL you want to style as parameter to this page like this:
 ```
-	https://matteobrusa.github.io/md-styler/?url=https://my.site/my/url
+	https://matteobrusa.github.io/md-styler/?url=https://my.site/my/url.md
 ```
 
 ## How does it work?
