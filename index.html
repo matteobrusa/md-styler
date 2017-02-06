@@ -38,14 +38,19 @@
 		$("xmp").attr("theme", theme);
 	}
 	
-	$.get(
-		"//cors-anywhere.herokuapp.com/"+ url,
-		function (response) {
-		 
-			$("xmp").html(response);
-			$("title").html(url);
+	jqXHR= $.get("//cors-anywhere.herokuapp.com/"+ url, function (response) {
+		$("xmp").html(response);
+		title= url;
+		p= title.lastIndexOf('/');
+		if (p>0) title= title.substring(p);
+		p= title.indexOf('?');
+		if (p>0) title= title.substring(0, p-1);
+		$("title").html(title);
 
-			$.getScript("https://cdn.rawgit.com/arturadib/strapdown/gh-pages/v/0.2/strapdown.js")
+		$.getScript("https://cdn.rawgit.com/arturadib/strapdown/gh-pages/v/0.2/strapdown.js")
 	});
+	jqXHR.fail(function() {
+    		alert( "error loading "+url );
+  	});
 </script>
 </html>
