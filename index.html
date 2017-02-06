@@ -6,26 +6,6 @@
 <title>Loading...</title>
 
 <xmp theme="united" style="display:none;">
-## What is it?
-Markdown styler loads a file from a URL and styles it as a markdown document.
-
-## How do i use it?
-Say you have a markdown document at `https://my.site/my/url`.
-Just append the URL you want to style as parameter to this page like this:
-```
-	https://matteobrusa.github.io/md-styler/?url=https://matteobrusa.github.io/md-styler/README.md
-```
-
-## How does it work?
-Markdown styler is a simple hack standing on the shoulders of giants: [Strapdown.js](http://strapdownjs.com/) and [cors-anywhere](cors-anywhere.herokuapp.com).
-
-## Can I use it with Dropbox links?
-Sure!
-
-## Demo please
-https://matteobrusa.github.io/md-styler/?url=https://matteobrusa.github.io/md-styler/README.md
-
-
 </xmp>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -43,23 +23,20 @@ https://matteobrusa.github.io/md-styler/?url=https://matteobrusa.github.io/md-st
 	
 	if (url==null) {
 		$("title").html("Markdown styler");
-		$.getScript("https://cdn.rawgit.com/arturadib/strapdown/gh-pages/v/0.2/strapdown.js")
+		url= "https://matteobrusa.github.io/md-styler/README.md";
 	}
-	else {
 	
-		if (url.indexOf("dropbox.com") && url.endsWith("dl=0"))
-			url= url.replace("dl=0", "dl=1");
+	if (url.indexOf("dropbox.com") && url.endsWith("dl=0"))
+		url= url.replace("dl=0", "dl=1");
 
-		$.get(
-			"//cors-anywhere.herokuapp.com/"+ url,
-			function (response) {
+	$.get(
+		"//cors-anywhere.herokuapp.com/"+ url,
+		function (response) {
 		 
-				$("xmp").html(response);
-				$("title").html(url);
+			$("xmp").html(response);
+			$("title").html(url);
 
-				$.getScript("https://cdn.rawgit.com/arturadib/strapdown/gh-pages/v/0.2/strapdown.js")
-		});
-	}
-	
+			$.getScript("https://cdn.rawgit.com/arturadib/strapdown/gh-pages/v/0.2/strapdown.js")
+	});
 </script>
 </html>
