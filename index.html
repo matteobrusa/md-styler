@@ -41,19 +41,25 @@
 		$("xmp").attr("theme", theme);
 	}
 	
+	errorHandler= function() {
+    		alert( "error loading "+url );
+  	}
+	
 	jqXHR= $.get("//cors-anywhere.herokuapp.com/"+ url, function (response) {
 		$("xmp").html(response);
-		title= url;
-		p= title.lastIndexOf('/');
-		if (p>0) title= title.substring(p+1);
-		p= title.indexOf('?');
-		if (p>0) title= title.substring(0, p);
-		$("title").html(title);
+		if (response.startsWith("<!"))
+			errorHandler();
+		else {
+			title= url;
+			p= title.lastIndexOf('/');
+			if (p>0) title= title.substring(p+1);
+			p= title.indexOf('?');
+			if (p>0) title= title.substring(0, p);
+			$("title").html(title);
 
-		$.getScript("https://cdn.rawgit.com/arturadib/strapdown/gh-pages/v/0.2/strapdown.js")
+			$.getScript("https://cdn.rawgit.com/arturadib/strapdown/gh-pages/v/0.2/strapdown.js")
+		}
 	});
-	jqXHR.fail(function() {
-    		alert( "error loading "+url );
-  	});
+	jqXHR.fail(errorHandler);
 </script>
 </html>
