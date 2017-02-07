@@ -47,7 +47,7 @@
 	
 	jqXHR= $.get("//cors-anywhere.herokuapp.com/"+ url, function (response) {
 		$("xmp").html(response);
-		if (response.startsWith("<!"))
+		if (0==response.indexOf("<!"))
 			errorHandler();
 		else {
 			title= url;
