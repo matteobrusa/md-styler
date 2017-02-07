@@ -33,7 +33,7 @@
 	if (url.indexOf("%3A%2F%2F")) 
 		url= decodeURIComponent(url);
 	
-	if (url.indexOf("dropbox.com") && url.endsWith("dl=0"))
+	if (url.indexOf("dropbox.com") && url.indexOf("?dl=0"))
 		url= url.replace("dl=0", "dl=1");
 
 	theme= $.urlParam("theme");
