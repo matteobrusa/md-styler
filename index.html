@@ -35,6 +35,19 @@
 	
 	if (url.indexOf("dropbox.com")!=-1 && url.indexOf("?dl=0")!=-1)
 		url= url.replace("dl=0", "dl=1");
+	
+	// Fat ugly hack for old Safari
+	if (url.indexOf("https")==0) {
+		ua= navigator.userAgent;
+		if (ua.indexOf('Safari') != -1 && ua.indexOf('Chrome') == -1) {
+			if (ua.indexOf("Version/9.")>0 ||
+			    ua.indexOf("Version/8.")>0 ||
+			    ua.indexOf("Version/7.")>0) {
+				url= url.replace("https", "http");
+				console.log("Ugly hack for: "+ua);
+			}
+		}
+	}
 
 	theme= $.urlParam("theme");
 	if (theme!=null){
